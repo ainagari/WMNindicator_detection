@@ -1,0 +1,9 @@
+datasets==4.1.1
+evaluate==0.4.6
+huggingface_hub==0.33.2
+numpy==2.3.3
+pandas==2.3.2
+peft==0.17.1
+sentence_transformers==5.1.0
+torch==2.8.0
+transformers==4.56.1
