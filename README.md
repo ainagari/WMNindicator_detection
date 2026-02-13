@@ -7,12 +7,10 @@ Aina Garí Soler, Matthieu Labeau and Chloé Clavel (2025). Toward the Automatic
 
 ## Data
 
-The NeWMe corpus can be obtained from [here](https://github.com/gu-wmn/webapp/tree/main). This link contains the standoff annotations and code to download the corresponding corpora.
-
-### COMING SOON (expected: end of November 2025) 
-We will soon provide (1) the full code to derive the Indicators dataset from the annotations available at the link above, including some postprocessing and cleaning; as well as (2) the data used to train the models for domain adaptation with an mlm objective and (3) the contrastive pairs used for the development of the model trained in a contrastive setting. 
-
-In the meantime, in `dataset_ids/`, you can find the ids of NeWMe instances and the subset of the Indicators dataset they belong to (train-rd, train-rx, dev or test).
+Go to [`obtaining_data`](https://github.com/ainagari/WMNindicator_detection/tree/main/obtaining_data) for more details on how to obtain all the data used in the experiments of the paper, namely:
+(1) the Indicators dataset, derived from NeWMe annotations;
+(2) the data used to train the models for domain adaptation with an MLM objective;
+(3) the contrastive pairs used for the development of the model trained in a contrastive setting. 
 
 
 ## Code
