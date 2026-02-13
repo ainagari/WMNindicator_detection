@@ -29,10 +29,6 @@ from sentence_transformers.losses.BatchHardTripletLoss import BatchHardTripletLo
 from utils import load_dataset, determine_usernames_for_instance
 
 
-
-
-## PENDING TODO CLEAN THIS FUNCTION
-
 class IndicatorDataset(Dataset):
     def __init__(self, instances, tokenizer, context_type, add_usernames, contrastive=False):
         if "DialogLED" in modelnametouse or "roberta" in modelnametouse:
@@ -173,10 +169,10 @@ def load_contrastive_pairs(regex_aware, pt_dataset):
     s = "regex" if regex_aware else "random"
     pair_idcs = {'train':[], 'dev':[]}
 
-    pt = [l.strip().split("\t") for l in open("contrastive_pairs_" + s + ".tsv").readlines()]
+    pt = [l.strip().split("\t") for l in open("data/contrastive_pairs_" + s + ".tsv").readlines()]
     pair_idcs['train'] = [(int(x), int(y)) for x, y in pt]
 
-    pd = [l.strip().split("\t") for l in open("contrastive_pairs_dev.tsv").readlines()]
+    pd = [l.strip().split("\t") for l in open("data/contrastive_pairs_dev.tsv").readlines()]
     pair_idcs['dev'] = [(int(x), int(y)) for x, y in pd]
 
     # Now select the pairs from the dataset
