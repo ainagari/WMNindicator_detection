@@ -23,10 +23,7 @@ Once the corpora have been downloaded, to reconstruct the NeWMe corpus from the 
 To obtain the Indicators dataset from `extracted_newme.jsonl`, run the script `create_indicators_dataset.py`. This will place to new files under `../data/`: `indicators_dataset_random.json` and `indicators_dataset_regexaware.json`
 
 
-# Obtaining the data for domain adaptation / MLM experiments and contrastive pairs
-
-
-# Data for Domain adaptation
+# Obtaining the data for domain adaptation / MLM experiments
 
 
 Since we can't share the original corpora directly (BNC, Switchboard, Reddit CMV), they need to be downloaded from their source (or using the flask webapp presented above).
@@ -45,7 +42,7 @@ This will generate the `mlm_dataset.json` file that was used for training the mo
 
 
 
-# Contrastive pairs
+# Obtaining the contrastive pairs
 
 To obtain the pairs used for the contrastive learning setting, simply run: 
 
