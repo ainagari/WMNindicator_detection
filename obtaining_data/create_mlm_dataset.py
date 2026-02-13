@@ -2,7 +2,7 @@
 import json
 import os
 import random
-from simplifying_swda import simplify
+from create_indicators_dataset import simplify
 random.seed(9)
 from convokit import Corpus, download
 import re
@@ -10,83 +10,16 @@ import re
 
 bnc_dir = "bnc_considered_simplified_spoken_conversations/" 
 
-
-def simplify(utterance):
-    ############### CURLY BRACKETS
-    curly_brackets_pattern = re.compile("\{[a-z|A-Z] .*?\}")
-    out = re.finditer(curly_brackets_pattern, utterance)
-    spans_to_remove = [] # second index will not be included
-    for match in out:
-        beginning = (match.span()[0], match.span()[0]+3)
-        end = (match.span()[1]-2, match.span()[1])
-        spans_to_remove.append(beginning)
-        spans_to_remove.append(end)
-    new_utterance = ''
-    prev_idx = 0
-    for span_to_remove in spans_to_remove:
-        new_utterance += utterance[prev_idx:span_to_remove[0]]
-        prev_idx = span_to_remove[1]
-    new_utterance += utterance[prev_idx:]
-
-    current_utterance = new_utterance
-
-    ################ LAUGHTER AND OTHER CODES
-    laughter_pattern = re.compile("\<(.*?)\>")
-    out = re.finditer(laughter_pattern, current_utterance)
-    spans_to_remove = [match.span() for match in out]
-    #for match in out:
-    #    spans_to_remove.append(match.span())
-
-    if spans_to_remove:
-        new_utterance = ''
-        prev_idx = 0
-        for span_to_remove in spans_to_remove:
-            new_utterance += current_utterance[prev_idx:span_to_remove[0]]
-            prev_idx = span_to_remove[1]
-        new_utterance += current_utterance[prev_idx:]
-    else:
-        new_utterance = current_utterance
-
-    current_utterance = new_utterance
-
-    ################### STRIPPING PUNCTUATION
-    new_utterance = current_utterance.replace("/", "")
-    new_utterance = new_utterance.replace("+", "")
-    new_utterance = new_utterance.replace("--", "")
-    new_utterance = new_utterance.replace(" -", "")
-    new_utterance = new_utterance.replace("]", " ")
-    new_utterance = new_utterance.replace("[", " ")
-    new_utterance = new_utterance.replace("#", " ")
-    new_utterance = new_utterance.replace("((", " ")
-    new_utterance = new_utterance.replace("))", " ")
-    new_utterance = new_utterance.replace("  ", " ")
-    new_utterance = new_utterance.replace("  ", " ")
-
-    words = word_tokenize(new_utterance)
-    new_utterance = " ".join(words)
-
-    return new_utterance
-
-
-
-
-
-
 def check_unavailable_myutt(utt):
     if utt['text'] in ['[deleted]', '[removed]', '<INAUDIBLE>'] or utt['author'] in ['[deleted]', '[removed]', '<INAUDIBLE>']:
             return True
     return False
     
-
-
 def check_unavailable(conv):
     for utt in conv.iter_utterances():
         if utt.text in ['[deleted]', '[removed]', '<INAUDIBLE>'] or utt.speaker.id in ['[deleted]', '[removed]', '<INAUDIBLE>']:
             return True
     return False
-
-
-
 
 def remove_cmv_extra_text(utterance):
     # Remove anything that comes after "*Hello, users of CMV! This is a footnote"
@@ -111,10 +44,7 @@ def remove_cmv_extra_text(utterance):
         
     return nnew_utterance
         
-
-
-def modify_for_citation(utterance_text):
-    
+def modify_for_citation(utterance_text): 
     citation_matches = re.finditer("&gt;.*?\n\n", utterance_text)
     if citation_matches:
         filtered_text = ''
@@ -132,11 +62,9 @@ def modify_for_citation(utterance_text):
             return filtered_text
 
 
-
-
 if __name__ == '__main__':
 	    
-	dataset_rx = json.load(open("../data/indicators_dataset_regex.json"))
+	dataset_rx = json.load(open("../data/indicators_dataset_regexaware.json"))
 
 	all_conv_ids = {"BNC":set(),'swda':set(),'Reddit':set()}
 
@@ -211,11 +139,6 @@ if __name__ == '__main__':
 
 	################# SWDA
 	print("SWDA")
-
-
-
-
-
 	corpus = Corpus(filename=download("switchboard-corpus"))
 
 	conversations = dict()
@@ -270,11 +193,8 @@ if __name__ == '__main__':
 	    ready_swda_pairs.append((text, pair[2]))
 	        
 	        
-
 	############## REDDIT    
 	print("REDDIT")
-
-
 	corpus = Corpus(filename=download("winning-args-corpus"))
 
 	conversations = dict()
@@ -386,12 +306,8 @@ if __name__ == '__main__':
 	    pairs_by_conv[str(conv.id)] = pairs
 
 
-	    utts_this_conv = ordered_utts_this_conv
-	        
+	    utts_this_conv = ordered_utts_this_conv	        
 	    conversations[str(conv.id)] = utts_this_conv
-
-
-
 	reddit_pairs = []
 	i=0
 	for conv in pairs_by_conv:    
