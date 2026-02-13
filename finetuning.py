@@ -206,8 +206,8 @@ def get_sentences_from_padded_ids(dataset):
 
 
 
-#### TODO this is for contrastive, polish
-def select_best_model_from_path(path): # similar to code later but path is not args.out_path and also we check the binary results dont we??
+
+def select_best_model_from_path(path): # similar to code later but path is not args.out_path and also we check the binary results
     dev_results = pd.read_csv(path + "/results/eval/binary_classification_evaluation_indicators_dev_results.csv")
     # pick the row with highest cosine_f1 and then pick its epoch. and then find and load the corresponding model
     idxbestrow = dev_results['cosine_f1'].idxmax()
