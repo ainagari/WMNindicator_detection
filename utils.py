@@ -4,7 +4,7 @@ def load_dataset(regex_awareness=True, debugging_mode=False, corpus='all'):
 
     regex_str = "regexaware" if regex_awareness else "random"
 
-    fn = "indicators_dataset_" + regex_str + ".json"
+    fn = "data/indicators_dataset_" + regex_str + ".json"
 
     with open(fn) as f:
         data = json.load(f)
@@ -21,13 +21,12 @@ def load_dataset(regex_awareness=True, debugging_mode=False, corpus='all'):
     return data
 
 
-def determine_usernames_for_instance(instance):
-    # PENDING TO DEBUG
+def determine_usernames_for_instance(instance):    
     context_usernames = []
     indicator_username = instance['target']['author']
     if instance['future_context']:
         future_context_username = instance['future_context'][0]['author']
-    for context in instance['past_context']: # + instance['future_context']:
+    for context in instance['past_context']: 
         context_usernames.append(context['author'])
     username_id_mapping = dict()
     idi = 1
