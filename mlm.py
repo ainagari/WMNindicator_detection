@@ -41,7 +41,7 @@ def load_mlm_data(debugging_mode=False):
     '''problem_definition can be cc (corpus centric) or pp (ppwu centric)
     regex awereness can be True or false
     simnwt can be negsimnwt or nosimnwt'''
-    fn = "mlm_dataset.json"
+    fn = "data/mlm_dataset.json"
     with open(fn) as f:
         data = json.load(f)
 
