@@ -1,8 +1,8 @@
 # ☝🏻 Toward the Automatic Detection of Word Meaning Negotiation Indicators in Conversation 💬
 
-This repository will contain code for the upcoming paper:
+This repository contains code for the paper:
 
-Aina Garí Soler, Matthieu Labeau and Chloé Clavel (2025). Toward the Automatic Detection of Word Meaning Negotiation Indicators in Conversation. Accepted at Findings of the Association for Computational Linguistics: EMNLP 2025.
+Aina Garí Soler, Matthieu Labeau and Chloé Clavel (2025). [Toward the Automatic Detection of Word Meaning Negotiation Indicators in Conversation](https://aclanthology.org/2025.findings-emnlp.1337/). In _Findings of the Association for Computational Linguistics: EMNLP 2025, Suzhou, China, November 5-7_.
 
 
 ## Data
