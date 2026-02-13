@@ -1,13 +1,4 @@
 '''
-
-IN PROCESS!! ADAPTING FROM model_training.py....
-use with indicators environment
-
-Make sure it works with all the models of interest...
-
-
-Main steps:
-
 1. Read in config options
 2. Instantiate model and tokenizer
 3. Load the data with the desired specifications
