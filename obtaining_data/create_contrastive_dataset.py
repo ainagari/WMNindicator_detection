@@ -19,11 +19,8 @@ prop_dev = 0.05
 
 
 if __name__ == "__main__":
-
-
-
-    dataset_nr = json.load(open("../data/indicators_dataset_noregex.json"))
-    dataset_rx = json.load(open("../data/indicators_dataset_regex.json"))
+    dataset_nr = json.load(open("../data/indicators_dataset_random.json"))
+    dataset_rx = json.load(open("../data/indicators_dataset_regexaware.json"))
     datasets = [('random', dataset_nr), ('regex', dataset_rx)]
 
 
@@ -94,8 +91,6 @@ if __name__ == "__main__":
                 
         selected_pairs[dsn]['positive'] = positive_pairs
         selected_pairs[dsn]['negative'] = negative_pairs
-        
-
 
 
     # This will be the same for regex and random
@@ -156,10 +151,6 @@ if __name__ == "__main__":
         for p1, p2 in all_pairs:
             out.write(str(p1) + "\t" + str(p2) + "\n")
 
-
-
-
-
     # Number of positive and negative labels, in total, per subset and per corpus
 
     print("Getting dataset statistics:")
@@ -194,8 +185,6 @@ if __name__ == "__main__":
         
         print("positive", cp.most_common(20))
         print("negative", cn.most_common(20))
-        
-
 
 
     for dsn, ds in datasets:
