@@ -8,7 +8,7 @@ Here we explain how to reconstruct the complete NeWMe corpus from its standoff a
 
 The annotation data is distributed in a standoff format that contains only corpus identifiers, dialogue IDs, span positions and label metadata.
 
-The full text is reconstructed bu downloading the original public corpora and matching the standoff positions. The code to do so is provided in [the NeWMe repository](https://github.com/gu-wmn/webapp/tree/main). However, you need to replace the file `webapp/src/newme/annotation/wmn_annotations.json` in that repository with the version provided in this directory, which, as opposed to the one in that repository, contains also all instances labeled as "Nothing".
+The full text is reconstructed by downloading the original public corpora and matching the standoff positions. The code to do so is provided in [the NeWMe repository](https://github.com/gu-wmn/webapp/tree/main). However, you need to replace the file `webapp/src/newme/annotation/wmn_annotations.json` in that repository with the version provided in this directory, which, as opposed to the one in that repository, contains also all instances labeled as "Nothing".
 
 After having cloned that repository and changed the standoff annotation file, run `flask --app src/newme/app run` as indicated in the instructions in the NeWMe repository. 
 If this is the first time this is run, this will download the underlying corpora (Switchboard, Winning Args and the BNC), will extract the relevant dialogues (which will be saved to `corpora/extracted_corpora.json`) and will start the web interface.
@@ -20,7 +20,7 @@ Once the corpora have been downloaded, to reconstruct the NeWMe corpus from the 
 
 ## Deriving the Indicators dataset
 
-To obtain the Indicators dataset from `extracted_newme.jsonl`, run the script `create_indicators_dataset.py`. This will place to new files under `../data/`: `indicators_dataset_random.json` and `indicators_dataset_regexaware.json`
+To obtain the Indicators dataset from `extracted_newme.jsonl`, run the script `create_indicators_dataset.py`. This will place two new files under `../data/`: `indicators_dataset_random.json` and `indicators_dataset_regexaware.json`
 
 
 # Obtaining the data for domain adaptation / MLM experiments
