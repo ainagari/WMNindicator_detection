@@ -20,7 +20,7 @@ The fine-tuning experiments were run using the libraries specified in `requireme
 
 ### Supervised Models
 
-To **fine-tune of a model, or to train it in a contrastive setting**, you can run `finetuning.py` with the arguments described below. The script will run training and save the checkpoints together with their dev results at every epoch. It will also select the epoch with the best dev results and save its predictions on the dev and test sets.
+To **fine-tune a model, or to train it in a contrastive setting**, you can run `finetuning.py` with the arguments described below. The script will run training and save the checkpoints together with their dev results at every epoch. It will also select the epoch with the best dev results and save its predictions on the dev and test sets.
 
 **Data-related arguments**
 * `--regex_aware`: add this option to train models on the RX dataset, or omit it for the RD dataset
