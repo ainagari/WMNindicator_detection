@@ -62,6 +62,31 @@ For example:
 The script will save all model outputs and it will calculate multiple evaluation metrics and print their results.
 
 
+## Citation
+
+If you use the code in this repository, please cite our paper:
+```
+@inproceedings{gari-soler-etal-2025-toward,
+    title = "{Toward the Automatic Detection of Word Meaning Negotiation Indicators in Conversation}",
+    author = "Gar{\'i} Soler, Aina  and
+      Labeau, Matthieu  and
+      Clavel, Chlo{\'e}",
+    editor = "Christodoulopoulos, Christos  and
+      Chakraborty, Tanmoy  and
+      Rose, Carolyn  and
+      Peng, Violet",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2025",
+    month = nov,
+    year = "2025",
+    address = "Suzhou, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.findings-emnlp.1337/",
+    doi = "10.18653/v1/2025.findings-emnlp.1337",
+    pages = "24580--24596",
+    ISBN = "979-8-89176-335-7"
+}
+```
+
 ## Contact
 
 For any questions or requests feel free to [contact me](https://ainagari.github.io/menu/contact.html).
