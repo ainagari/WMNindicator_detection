@@ -6,16 +6,38 @@ Here we explain how to reconstruct the complete NeWMe corpus from its standoff a
 
 ## Obtaining NeWMe
 
-The annotation data is distributed in a standoff format that contains only corpus identifiers, dialogue IDs, span positions and label metadata.
+The annotation data is distributed in a standoff format that contains only corpus identifiers, dialogue IDs, span positions and label metadata. The full text is reconstructed by downloading the original public corpora and matching the standoff positions. To do so, use the legacy version of the NeWMe webapp (repository: https://github.com/gu-wmn/webapp). Steps:
 
-The full text is reconstructed by downloading the original public corpora and matching the standoff positions. The code to do so is provided in [the NeWMe repository](https://github.com/gu-wmn/webapp/tree/main). However, you need to replace the file `webapp/src/newme/annotation/wmn_annotations.json` in that repository with the version provided in this directory, which, as opposed to the one in that repository, contains also all instances labeled as "Nothing".
+1) Clone and switch to the legacy commit:
+```
+git clone https://github.com/gu-wmn/webapp.git
+cd webapp
+git checkout f07fd6c
+git switch -c oldapp
+```
+2) Replace the annotations file:
 
-After having cloned that repository and changed the standoff annotation file, run `flask --app src/newme/app run` as indicated in the instructions in the NeWMe repository. 
+Replace this file in the cloned repository:
+
+``src/newme/annotation/wmn_annotations.json``
+
+with the ``wmn_annotations.json`` provided in this project. As opposed to the one in the NeWMe repository, the version of this file in our repository contains also instances labeled as "Nothing".
+
+3) Run the webapp once (to prepare corpus data)
+
+After having cloned that repository and changed the standoff annotation file, from the webapp directory, run:
+
+`flask --app src/newme/app run`.
+
 If this is the first time this is run, this will download the underlying corpora (Switchboard, Winning Args and the BNC), will extract the relevant dialogues (which will be saved to `corpora/extracted_corpora.json`) and will start the web interface.
 
 You can stop the Flask server (Ctrl+C) once you see "Saving ./corpora/extracted_corpora.json": the extraction is complete.
 
+4) Generate the final JSONL file
+
 Once the corpora have been downloaded, to reconstruct the NeWMe corpus from the standoff annotations, run the script `extract_newme_streaming.py` provided here. This will create the file `extracted_newme.jsonl` with the full NeWMe corpus.
+
+If you encounter any difficulties in downloading the corpus, do not hesitate to contact me.
 
 
 ## Deriving the Indicators dataset
