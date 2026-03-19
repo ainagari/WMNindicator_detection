@@ -8,14 +8,14 @@ Here we explain how to reconstruct the complete NeWMe corpus from its standoff a
 
 The annotation data is distributed in a standoff format that contains only corpus identifiers, dialogue IDs, span positions and label metadata. The full text is reconstructed by downloading the original public corpora and matching the standoff positions. To do so, use the legacy version of the NeWMe webapp (repository: https://github.com/gu-wmn/webapp). Steps:
 
-1) Clone and switch to the legacy commit:
+**1) Clone and switch to the legacy commit**:
 ```
 git clone https://github.com/gu-wmn/webapp.git
 cd webapp
 git checkout f07fd6c
 git switch -c oldapp
 ```
-2) Replace the annotations file:
+**2) Replace the annotations file**:
 
 Replace this file in the cloned repository:
 
@@ -23,7 +23,7 @@ Replace this file in the cloned repository:
 
 with the ``wmn_annotations.json`` provided in this project. As opposed to the one in the NeWMe repository, the version of this file in our repository contains also instances labeled as "Nothing".
 
-3) Run the webapp once (to prepare corpus data)
+**3) Run the webapp once (to prepare corpus data)**:
 
 After having cloned that repository and changed the standoff annotation file, from the webapp directory, run:
 
@@ -33,7 +33,7 @@ If this is the first time this is run, this will download the underlying corpora
 
 You can stop the Flask server (Ctrl+C) once you see "Saving ./corpora/extracted_corpora.json": the extraction is complete.
 
-4) Generate the final JSONL file
+**4) Generate the final JSONL file**:
 
 Once the corpora have been downloaded, to reconstruct the NeWMe corpus from the standoff annotations, run the script `extract_newme_streaming.py` provided here. This will create the file `extracted_newme.jsonl` with the full NeWMe corpus.
 
