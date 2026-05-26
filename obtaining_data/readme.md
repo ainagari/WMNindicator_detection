@@ -17,9 +17,11 @@ git switch -c oldapp
 ```
 **2) Replace the annotations file**:
 
-Replace this file in the cloned repository:
+Replace these two files in the cloned repository:
 
 ``src/newme/annotation/wmn_annotations.json``
+``/src/newme/corpus/wmn_annotations.json``
+
 
 with the ``wmn_annotations.json`` provided in this project. As opposed to the one in the NeWMe repository, the version of this file in our repository contains also instances labeled as "Nothing".
 
