@@ -1,5 +1,5 @@
 import json
-from simplifying_swda import simplify
+from create_indicators_dataset import simplify
 import random
 import pdb
 import numpy as np
